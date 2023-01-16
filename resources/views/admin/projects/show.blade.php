@@ -6,9 +6,9 @@
 @if($project->cover_image)
 <img src="{{asset('storage/' . $project->cover_image)}}" alt="{{$project->title}}">
 @endif
-<div class="category">
-    <strong>Category:</strong>
-    {{ $post->category ? $post->category->name : 'Uncategorized'}}
+<div class="type">
+    <strong>Type:</strong>
+    {{ $project->type ? $project->type->name : 'Uncategorized'}}
 </div>
 <p>{{$project->description}}</p>
 <div>{{$project->vote}}</div>
