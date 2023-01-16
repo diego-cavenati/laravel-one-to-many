@@ -44,6 +44,25 @@
         @enderror
 
         <div class="mb-3">
+            <label for="type_id" class="form-label">types</label>
+            <select class="form-select form-select-lg @error('type_id') 'is-invalid' @enderror" name="type_id" id="type_id">
+                <option value="">Uncategorize</option>
+                @forelse ($types as $type )
+                <option value="{{$type->id}}" {{ $type->id == old('type_id',  $post->type ? $post->type->id : '') ? 'selected' : '' }}>
+                    {{$type->name}}
+                </option>
+                @empty
+                <option value="">Sorry, no types in the system.</option>
+                @endforelse
+            </select>
+        </div>
+        @error('type_id')
+        <div class="alert alert-danger" role="alert">
+            {{$message}}
+        </div>
+        @enderror
+
+        <div class="mb-3">
             <label for="description" class="form-label @error('description') is-invalid @enderror">Description</label>
             <textarea class="form-control" name="description" id="description" rows="4">{{old('description', $project->description)}}</textarea>
         </div>
